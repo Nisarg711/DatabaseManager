@@ -179,8 +179,10 @@ export function ProjectCard({ project, onDeleted }) {
 
     return (
         <>
-            <Card className="hover:shadow-lg transition-all duration-300 hover:scale-105 bg-card/90 backdrop-blur-sm border-accent/20">
-                <CardHeader className="pb-3">
+            <div className="card-border-animation">
+                <div className="card-border-content">
+                    <Card className="bg-card/90 backdrop-blur-sm border-accent/20 h-full">
+                        <CardHeader className="pb-3">
                     <div className="flex items-start justify-between">
                         <div className="flex items-center space-x-2">
                             <Database className="w-5 h-5 text-primary" />
@@ -271,6 +273,8 @@ export function ProjectCard({ project, onDeleted }) {
                     </div>
                 </CardContent>
             </Card>
+                </div>
+            </div>
 
             <Dialog open={isEditModalOpen} onOpenChange={(open) => !editLoading && setIsEditModalOpen(open)}>
                 <DialogContent>

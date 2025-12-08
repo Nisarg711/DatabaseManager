@@ -287,9 +287,9 @@ export default function Query({ initialQuery, onQueryMounted }) {
     return (<>
   { suggestionsLoading ? (
     <div className="mx-10 mt-[25px]" aria-busy="true" aria-live="polite">
-      <div className="chat-input-area  bg-white rounded-xl shadow-lg px-8 py-8 flex flex-col gap-4 ">
+      <div className="chat-input-area bg-card rounded-xl shadow-lg px-8 py-8 flex flex-col gap-4 border border-border">
         <div className="flex items-center justify-between mb-4">
-          <div className="text-lg font-medium">Generating suggestions</div>
+          <div className="text-lg font-medium text-foreground">Generating suggestions</div>
           <div className="flex items-center gap-2">
             <DotLottieReact
               src="https://lottie.host/bc9b7976-f4d5-43d6-bf35-d97023948cbd/0LrKX98liy.lottie"
@@ -297,25 +297,25 @@ export default function Query({ initialQuery, onQueryMounted }) {
               autoplay
               style={{ width: 36, height: 36 }}
             />
-            <span className="text-sm text-gray-500">Hang tight — getting ideas for you</span>
+            <span className="text-sm text-muted-foreground">Hang tight — getting ideas for you</span>
           </div>
         </div>
         <div className="flex flex-wrap gap-3">
           {[1,2,3,4].map(n => (
-            <div key={n} className="animate-pulse bg-gray-100 rounded-md h-10 w-1/3 max-w-[240px]" />
+            <div key={n} className="animate-pulse bg-muted rounded-md h-10 w-1/3 max-w-[240px]" />
           ))}
         </div>
       </div>
     </div>
   ) : querysuggestions? <div className="flex flex-col h-full mt-[25px] [@media(max-width:480px)]:mt-0">
-                      <div className={`chat-input-area bg-white rounded-xl shadow-lg px-8 py-10 mx-10 flex flex-col gap-30 [@media(max-width:480px)]:mx-0 [@media(max-width:480px)]:mt-0 ${loading ? 'loading' : ''}`}>
+                      <div className={`chat-input-area bg-card rounded-xl shadow-lg px-8 py-10 mx-10 flex flex-col gap-30 border border-border [@media(max-width:480px)]:mx-0 [@media(max-width:480px)]:mt-0 ${loading ? 'loading' : ''}`}>
                         <div className="query_head flex flex-col gap-3">
                         <p>Ask Your Database</p>
                             <textarea 
                             value={query} 
                             onChange={e => setQuery(e.target.value)}
                             placeholder="Ask your database in plain English... e.g., 'Show all employees in HR department'"
-                            className=" min-h-[48px] max-h-[200px] overflow-auto resize-none text-gray-800"
+                            className=" min-h-[48px] max-h-[200px] overflow-auto resize-none text-foreground bg-card"
                             rows={2}
                             style={{ transition: "height 0.2s" }}
                           />
@@ -328,10 +328,10 @@ export default function Query({ initialQuery, onQueryMounted }) {
                             <button
                               key={ex}
                               type="button"
-                              className="flex items-center gap-2 bg-sidebar border-1 hover:bg-gray-300 hover:cursor-pointer text-gray-800 text-xs font-medium px-4 py-2 rounded-md border-gray-200 shadow-sm"
+                              className="flex items-center gap-2 bg-muted border hover:bg-accent hover:cursor-pointer text-foreground text-xs font-medium px-4 py-2 rounded-md border-border shadow-sm"
                               onClick={() => setQuery(ex)}
                             >
-                                <Sparkles  className="w-4 h-4 text-gray-500"/>
+                                <Sparkles  className="w-4 h-4 text-primary"/>
                               {ex}
                             </button>
                           )): null }
@@ -353,12 +353,12 @@ export default function Query({ initialQuery, onQueryMounted }) {
                       </div>
                       {
                         showError && parsedError ? (
-                          <div className={`mx-10 mt-6 rounded-lg p-6 ${
+                          <div className={`mx-10 mt-6 rounded-lg p-6 border [@media(max-width:480px)]:mx-0 ${
                             parsedError.errorType === 'Success' 
-                              ? 'bg-green-50 border border-green-200 [@media(max-width:480px)]:mx-0'
+                              ? 'bg-green-50 border-green-200'
                               : parsedError.errorType === 'No Data Found' 
-                              ? 'bg-yellow-50 border border-yellow-200 [@media(max-width:480px)]:mx-0' 
-                              : 'bg-red-50 border border-red-200 [@media(max-width:480px)]:mx-0'
+                              ? 'bg-yellow-50 border-yellow-200' 
+                              : 'bg-red-50 border-red-200'
                           }`}>
                             <div className="flex items-start gap-3">
                              
@@ -371,16 +371,16 @@ export default function Query({ initialQuery, onQueryMounted }) {
                                   }`}>{parsedError.errorType}</h3>
                                   <button 
                                     onClick={() => setShowError(false)}
-                                    className={`cursor-pointer ${
+                                    className={`cursor-pointer transition-colors ${
                                       parsedError.errorType === 'Success'
-                                        ? 'text-green-500 hover:text-green-700'
+                                        ? 'text-green-600 hover:text-green-800'
                                         : parsedError.errorType === 'No Data Found' 
-                                        ? 'text-yellow-500 hover:text-yellow-700' 
-                                        : 'text-red-500 hover:text-red-700'
+                                        ? 'text-yellow-600 hover:text-yellow-800' 
+                                        : 'text-red-600 hover:text-red-800'
                                     }`}
                                   >
-                                    <svg className="w-5 h-5" cursor="pointer" fill="none" stroke="currentColor">
-                                      <path  d="M6 18L18 6M6 6l12 12" />
+                                    <svg className="w-5 h-5" cursor="pointer" fill="none" stroke="currentColor" strokeWidth="2">
+                                      <path d="M6 18L18 6M6 6l12 12" />
                                     </svg>
                                   </button>
                                 </div>
@@ -388,8 +388,8 @@ export default function Query({ initialQuery, onQueryMounted }) {
                                     : parsedError.errorType === 'No Data Found' ? 'text-yellow-700' : 'text-red-700'
                                 }`}>{parsedError.summary}</p>
                                 <p className="text-gray-700 mb-3">{parsedError.userFriendlyExplanation}</p>
-                                {parsedError.foreignKeyExplanation && (<div className={`bg-white rounded-md p-3 mb-3 border 
-                                ${parsedError.errorType === 'Success'? 'border-green-200': parsedError.errorType === 'No Data Found' ? 'border-yellow-200' : 'border-red-200'
+                                {parsedError.foreignKeyExplanation && (<div className={`bg-white rounded-md p-3 mb-3 border ${
+                                parsedError.errorType === 'Success'? 'border-green-200': parsedError.errorType === 'No Data Found' ? 'border-yellow-200' : 'border-red-200'
                                   }`}>
                                     <p className="text-sm font-medium text-gray-800 mb-1">Understanding Dependencies:</p>
                                     <p className="text-sm text-gray-600">{parsedError.foreignKeyExplanation}</p>
@@ -397,10 +397,10 @@ export default function Query({ initialQuery, onQueryMounted }) {
                                 )}          
                                 {parsedError.techdetail && (
                                   <details className="mt-3">
-                                    <summary className="text-sm text-gray-600 cursor-pointer">
+                                    <summary className="text-sm text-gray-600 cursor-pointer hover:text-gray-800 transition-colors">
                                       View technical details
                                     </summary>
-                                    <div className="mt-2 bg-gray-100 rounded p-2 text-xs text-gray-700  overflow-x-auto">
+                                    <div className="mt-2 bg-gray-100 rounded p-3 text-xs text-gray-700 overflow-x-auto border border-gray-200">
                                       {parsedError.techdetail.originalError}
                                     </div>
                                   </details>
@@ -408,12 +408,12 @@ export default function Query({ initialQuery, onQueryMounted }) {
                               </div>
                             </div>
                           </div>
-                        ) : !queryResult ? <div className="text-center mt-16 text-gray-500">
+                        ) : !queryResult ? <div className="text-center mt-16 text-muted-foreground">
                        
                         <div className="text-lg font-medium flex justify-center items-center flex-col">
-                             <Sparkles  className="w-10 h-10 text-gray-500"/>
+                             <Sparkles  className="w-10 h-10 text-muted-foreground"/>
                           Ask anything about your data<br />
-                          <span className="text-base text-gray-400">
+                          <span className="text-base text-muted-foreground">
                             Use natural language to query your database. No SQL knowledge required.
                           </span>
                         </div>
@@ -421,8 +421,8 @@ export default function Query({ initialQuery, onQueryMounted }) {
                       <>
                         <div className="mx-10 mt-6 flex items-center justify-between">
                           <div className="flex items-center gap-2 mb-2">
-                            <Sparkles className="w-5 h-5 text-blue-500"/>
-                            <h3 className="font-medium text-gray-700">Your Query:</h3>
+                            <Sparkles className="w-5 h-5 text-primary"/>
+                            <h3 className="font-medium text-foreground">Your Query:</h3>
                           </div>
                           <ExportDropdown
                             options={exportOptions}
@@ -432,7 +432,7 @@ export default function Query({ initialQuery, onQueryMounted }) {
                           />
                         </div>
                         <div className="mx-10">
-                          <p className="text-gray-600 pl-7">{displayquery}</p>
+                          <p className="text-muted-foreground pl-7">{displayquery}</p>
                         </div>
                         <hr />
                        <div className="w-full overflow-x-auto max-w-full overflow-y-auto h-full">
@@ -471,7 +471,7 @@ export default function Query({ initialQuery, onQueryMounted }) {
                                                 <tr>
                                                     <td
                                                         colSpan={headers.length || 1} // Fallback
-                                                        className="text-center py-4 text-gray-500"
+                                                        className="text-center py-4 text-muted-foreground"
                                                     >
                                                         No records found
                                                     </td>
@@ -495,7 +495,7 @@ export default function Query({ initialQuery, onQueryMounted }) {
                         </div>
                       </div>
                     ) : (
-                      <div className="mx-10 mt-[16px] text-center text-gray-500">Loading suggestions...</div>
+                      <div className="mx-10 mt-[16px] text-center text-muted-foreground">Loading suggestions...</div>
                     )}
     </>
    

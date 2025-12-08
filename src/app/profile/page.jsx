@@ -392,14 +392,87 @@ export default function ProfilePage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-yellow-50 to-blue-100 flex items-center justify-center">
-        <div className="text-2xl text-[#1e4a8a]">Loading...</div>
+      <div className="min-h-screen bg-gradient-to-br from-background via-accent/20 to-secondary/30 flex items-center justify-center p-6">
+        <div className="flex flex-col items-center gap-8">
+          {/* Animated spinner with rings */}
+          <div className="relative w-28 h-28">
+            {/* Outer ring with glow */}
+            <div className="absolute inset-0 border-4 border-primary/20 rounded-full shadow-lg shadow-primary/20"></div>
+            
+            {/* Spinning ring 1 */}
+            <div className="absolute inset-0 border-4 border-transparent border-t-primary border-r-primary rounded-full animate-spin"></div>
+            
+            {/* Spinning ring 2 - opposite direction */}
+            <div className="absolute inset-3 border-4 border-transparent border-b-secondary border-l-secondary rounded-full animate-spin" style={{ animationDuration: '1.5s', animationDirection: 'reverse' }}></div>
+            
+            {/* Inner circle with pulse */}
+            <div className="absolute inset-8 bg-gradient-to-br from-primary/30 to-secondary/30 rounded-full animate-pulse"></div>
+            
+            {/* Center dot */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-4 h-4 bg-primary rounded-full animate-ping"></div>
+              <div className="absolute w-4 h-4 bg-gradient-to-br from-primary to-secondary rounded-full shadow-lg shadow-primary/50"></div>
+            </div>
+          </div>
+
+          {/* Loading text with gradient animation */}
+          <div className="flex flex-col items-center gap-3">
+            <h2 className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent animate-pulse">
+              Loading Profile
+            </h2>
+            <div className="flex gap-1.5">
+              <span className="w-2.5 h-2.5 bg-primary rounded-full animate-bounce shadow-lg shadow-primary/50" style={{ animationDelay: '0ms' }}></span>
+              <span className="w-2.5 h-2.5 bg-primary rounded-full animate-bounce shadow-lg shadow-primary/50" style={{ animationDelay: '150ms' }}></span>
+              <span className="w-2.5 h-2.5 bg-primary rounded-full animate-bounce shadow-lg shadow-primary/50" style={{ animationDelay: '300ms' }}></span>
+            </div>
+          </div>
+
+          {/* Shimmer effect cards preview */}
+          <div className="w-full max-w-lg space-y-4 mt-6">
+            {/* Card 1 - Profile Header Preview */}
+            <div className="relative h-24 bg-card/60 backdrop-blur-sm rounded-xl border border-border overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent animate-shimmer"></div>
+              <div className="p-4 flex items-center gap-4">
+                <div className="w-16 h-16 rounded-full bg-muted animate-pulse"></div>
+                <div className="flex-1 space-y-2">
+                  <div className="h-4 bg-muted rounded w-32 animate-pulse"></div>
+                  <div className="h-3 bg-muted/70 rounded w-48 animate-pulse" style={{ animationDelay: '100ms' }}></div>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 2 - Main Content Preview */}
+            <div className="relative h-40 bg-card/60 backdrop-blur-sm rounded-xl border border-border overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent animate-shimmer" style={{ animationDelay: '200ms' }}></div>
+              <div className="p-4 space-y-3">
+                <div className="h-4 bg-muted rounded w-40 animate-pulse" style={{ animationDelay: '150ms' }}></div>
+                <div className="space-y-2">
+                  <div className="h-3 bg-muted/70 rounded w-full animate-pulse" style={{ animationDelay: '200ms' }}></div>
+                  <div className="h-3 bg-muted/70 rounded w-5/6 animate-pulse" style={{ animationDelay: '250ms' }}></div>
+                  <div className="h-3 bg-muted/70 rounded w-4/6 animate-pulse" style={{ animationDelay: '300ms' }}></div>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 3 - Additional Content Preview */}
+            <div className="relative h-28 bg-card/60 backdrop-blur-sm rounded-xl border border-border overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent animate-shimmer" style={{ animationDelay: '400ms' }}></div>
+              <div className="p-4 space-y-3">
+                <div className="h-4 bg-muted rounded w-36 animate-pulse" style={{ animationDelay: '300ms' }}></div>
+                <div className="flex gap-3">
+                  <div className="h-10 bg-muted/70 rounded flex-1 animate-pulse" style={{ animationDelay: '350ms' }}></div>
+                  <div className="h-10 bg-muted/70 rounded flex-1 animate-pulse" style={{ animationDelay: '400ms' }}></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-yellow-50 to-blue-100 p-6">
+    <div className="min-h-screen bg-gradient-to-br from-background via-accent/20 to-secondary/30 p-6">
       <ProfileHeader />
 
       <ProfileAvatar username={profile?.username} email={profile?.email} />

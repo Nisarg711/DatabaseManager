@@ -112,7 +112,6 @@ export default function Optimization() {
             alignItems: "flex-start",
             padding: "0px",
             width: "100%",
-            background: "linear-gradient(135deg, #F3F3E0 0%, rgba(203, 220, 235, 0.2) 50%, rgba(96, 139, 193, 0.3) 82.27%), #F3F3E0",
             minHeight: "100%",
         },
         headerSection: {
@@ -122,16 +121,13 @@ export default function Optimization() {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            background: "rgba(255, 255, 255, 0.8)",
             backdropFilter: "blur(4px)",
-            borderBottom: "1px solid rgba(0, 0, 0, 0.1)",
         },
         title: {
             fontFamily: "'Arimo', sans-serif",
             fontWeight: 700,
             fontSize: "32px",
             lineHeight: "24px",
-            color: "#2B5A9E",
             margin: 0,
             padding: 0,
         },
@@ -140,8 +136,6 @@ export default function Optimization() {
             flexDirection: "column",
             alignItems: "center",
             padding: "13px 25px",
-            background: "#FFFFFF",
-            border: "0.8px solid rgba(0, 0, 0, 0.1)",
             borderRadius: "14px",
             gap: "10px",
             minWidth: "255px",
@@ -151,14 +145,12 @@ export default function Optimization() {
             fontWeight: 700,
             fontSize: "20px",
             lineHeight: "36px",
-            color: "#2B5A9E",
         },
         countLabel: {
             fontFamily: "'Arimo', sans-serif",
             fontWeight: 400,
             fontSize: "14px",
             lineHeight: "20px",
-            color: "#1A1A1A",
         },
         card: {
             boxSizing: "border-box",
@@ -169,8 +161,6 @@ export default function Optimization() {
             gap: "24px",
             width: "90%",
             margin: "24px auto",
-            background: "#FFFFFF",
-            border: "0.8px solid rgba(0, 0, 0, 0.1)",
             borderRadius: "14px",
         },
         cardAlert: {
@@ -182,7 +172,6 @@ export default function Optimization() {
             gap: "16px",
             width: "90%",
             margin: "24px auto",
-            background: "#FFFFFF",
             borderWidth: "0.8px 0.8px 0.8px 4px",
             borderStyle: "solid",
             borderColor: "#D4183D",
@@ -196,7 +185,6 @@ export default function Optimization() {
             fontWeight: 400,
             fontSize: "16px",
             lineHeight: "16px",
-            color: "#1A1A1A",
             margin: 0,
             padding: "0 0 8px 0",
         },
@@ -205,7 +193,6 @@ export default function Optimization() {
             fontWeight: 400,
             fontSize: "16px",
             lineHeight: "24px",
-            color: "#6B7280",
             margin: 0,
             padding: 0,
         },
@@ -233,14 +220,12 @@ export default function Optimization() {
             fontWeight: 400,
             fontSize: "14px",
             lineHeight: "20px",
-            color: "#1A1A1A",
         },
         queryTime: {
             fontFamily: "'Arimo', sans-serif",
             fontWeight: 400,
             fontSize: "14px",
             lineHeight: "20px",
-            color: "#6B7280",
         },
         progressBar: {
             display: "flex",
@@ -248,13 +233,11 @@ export default function Optimization() {
             alignItems: "flex-start",
             width: "100%",
             height: "8px",
-            background: "rgba(43, 90, 158, 0.2)",
             borderRadius: "999px",
             overflow: "hidden",
         },
         progressFill: {
             height: "100%",
-            background: "#2B5A9E",
             borderRadius: "999px",
             transition: "width 0.3s ease",
         },
@@ -284,7 +267,6 @@ export default function Optimization() {
             fontWeight: 400,
             fontSize: "16px",
             lineHeight: "24px",
-            color: "#1A1A1A",
             margin: 0,
             padding: 0,
         },
@@ -304,7 +286,6 @@ export default function Optimization() {
             fontWeight: 400,
             fontSize: "16px",
             lineHeight: "24px",
-            color: "#6B7280",
             margin: 0,
             padding: 0,
             width: "100%",
@@ -316,8 +297,6 @@ export default function Optimization() {
             gap: "16px",
             width: "100%",
             padding: "16px",
-            background: "#FFFFFF",
-            border: "0.8px solid rgba(0, 0, 0, 0.1)",
             borderRadius: "10px",
         },
         alertDetails: {
@@ -331,7 +310,6 @@ export default function Optimization() {
             fontWeight: 400,
             fontSize: "14px",
             lineHeight: "20px",
-            color: "#1A1A1A",
             margin: 0,
             padding: 0,
             letterSpacing: "-0.35px",
@@ -341,9 +319,7 @@ export default function Optimization() {
             fontWeight: 400,
             fontSize: "12px",
             lineHeight: "16px",
-            color: "#6B7280",
             wordBreak: "break-all",
-            background: "#F5F3ED",
             padding: "8px",
             borderRadius: "4px",
             margin: "4px 0 0 0",
@@ -364,7 +340,6 @@ export default function Optimization() {
             fontWeight: 400,
             fontSize: "14px",
             lineHeight: "20px",
-            color: "#6B7280",
         },
         actionButtons: {
             display: "flex",
@@ -384,14 +359,11 @@ export default function Optimization() {
             padding: "8px 16px",
             width: "auto",
             height: "32px",
-            background: "#F5F3ED",
-            border: "0.8px solid rgba(0, 0, 0, 0.1)",
             borderRadius: "8px",
             fontFamily: "'Arimo', sans-serif",
             fontWeight: 400,
             fontSize: "14px",
             lineHeight: "20px",
-            color: "#1A1A1A",
             cursor: "pointer",
             transition: "all 0.2s ease",
         },
@@ -423,11 +395,8 @@ export default function Optimization() {
         dataTable: {
             width: "100%",
             borderCollapse: "collapse",
-            background: "#FFFFFF",
-            border: "1px solid #000000",
         },
         tableHeader: {
-            background: "#F5F3ED",
         },
         tableHeaderCell: {
             padding: "12px 16px",
@@ -436,11 +405,8 @@ export default function Optimization() {
             fontWeight: 400,
             fontSize: "16px",
             lineHeight: "24px",
-            color: "#000000",
-            border: "1px solid #000000",
         },
         tableRow: {
-            borderBottom: "1px solid #000000",
         },
         tableCell: {
             padding: "12px 16px",
@@ -448,10 +414,6 @@ export default function Optimization() {
             fontWeight: 400,
             fontSize: "16px",
             lineHeight: "24px",
-            color: "#000000",
-            background: "#FFFFFF",
-            borderRight: "1px solid #000000",
-            borderLeft: "1px solid #000000",
         },
         centerAlign: {
             textAlign: "center",
@@ -462,7 +424,6 @@ export default function Optimization() {
         actionButton: {
             background: "transparent",
             border: "none",
-            color: "#2B5A9E",
             cursor: "pointer",
             fontFamily: "'Arimo', sans-serif",
             fontWeight: 400,
@@ -583,23 +544,23 @@ export default function Optimization() {
     const potentialIssues = optimizationData?.potentialIssues || [];
 
     if (loading) {
-        return <div style={styles.loadingContainer}>Loading optimization data...</div>;
+        return <div style={styles.loadingContainer} className="bg-background text-foreground">Loading optimization data...</div>;
     }
 
     if (error) {
-        return <div style={styles.errorContainer}>Error: {error}</div>;
+        return <div style={styles.errorContainer} className="bg-background text-red-600">Error: {error}</div>;
     }
 
     return (
-        <div style={styles.optimizationContainer}>
+        <div style={styles.optimizationContainer} className="bg-background">
             {/* Header Section */}
-            <div style={styles.headerSection}>
-                <h1 style={styles.title}>Optimization Suggestions</h1>
-                <div style={styles.suggestionCount}>
-                    <span style={styles.countNumber}>
+            <div style={styles.headerSection} className="bg-card/80 border-b border-border">
+                <h1 style={styles.title} className="text-primary">Optimization Suggestions</h1>
+                <div style={styles.suggestionCount} className="bg-card border border-border">
+                    <span style={styles.countNumber} className="text-primary">
                         {optimizationData?.totalSuggestions || 0}
                     </span>
-                    <span style={styles.countLabel}>Total Suggestions</span>
+                    <span style={styles.countLabel} className="text-foreground">Total Suggestions</span>
                 </div>
             </div>
 
@@ -622,10 +583,10 @@ export default function Optimization() {
 
             {/* Query Performance Card */}
             {queryPerformance.length > 0 && (
-                <div style={styles.card}>
+                <div style={styles.card} className="bg-card border border-border">
                     <div style={styles.cardHeader}>
-                        <h2 style={styles.cardTitle}>Query Performance</h2>
-                        <p style={styles.cardDescription}>
+                        <h2 style={styles.cardTitle} className="text-foreground">Query Performance</h2>
+                        <p style={styles.cardDescription} className="text-muted-foreground">
                             AI-estimated execution times for common query patterns
                         </p>
                     </div>
@@ -633,19 +594,20 @@ export default function Optimization() {
                         {queryPerformance.map((query, idx) => (
                             <div key={`${query.name}-${idx}`} style={styles.performanceItem}>
                                 <div style={styles.performanceHeader}>
-                                    <span style={styles.queryName}>{query.name}</span>
-                                    <span style={styles.queryTime}>{query.time}ms</span>
+                                    <span style={styles.queryName} className="text-foreground">{query.name}</span>
+                                    <span style={styles.queryTime} className="text-muted-foreground">{query.time}ms</span>
                                 </div>
-                                <div style={styles.progressBar}>
-                                    <div 
+                                <div style={styles.progressBar} className="bg-muted">
+                                    <div
                                         style={{
                                             ...styles.progressFill,
-                                            width: `${Math.min(100, (query.time / maxQueryTime) * 100)}%`
+                                            width: `${(query.time / maxQueryTime) * 100}%`
                                         }}
-                                    ></div>
+                                        className="bg-primary"
+                                    />
                                 </div>
                                 {query.suggestion && (
-                                    <p style={{...styles.cardDescription, marginTop: "8px", fontSize: "14px"}}>
+                                    <p style={{...styles.cardDescription, marginTop: "8px", fontSize: "14px"}} className="text-muted-foreground">
                                         💡 {query.suggestion}
                                     </p>
                                 )}
@@ -657,25 +619,25 @@ export default function Optimization() {
 
             {/* Missing Indexes */}
             {missingIndexes.length > 0 && missingIndexes.map((index, idx) => (
-                <div key={`index-${idx}`} style={styles.cardAlert}>
+                <div key={`index-${idx}`} style={styles.cardAlert} className="bg-card">
                     <div style={styles.alertHeader}>
                         <div style={styles.alertIcon}>⚠️</div>
                         <div style={styles.alertTitleContainer}>
-                            <h3 style={styles.alertTitle}>
+                            <h3 style={styles.alertTitle} className="text-foreground">
                                 Missing Index: {index.tableName}.{index.columnName}
                             </h3>
                             <span style={styles.badgeHigh}>{index.severity || "HIGH"}</span>
                         </div>
                     </div>
-                    <p style={styles.alertDescription}>
+                    <p style={styles.alertDescription} className="text-muted-foreground">
                         {index.reason || `Adding an index on this column could improve query performance.`}
                     </p>
                     <div style={styles.cardContent}>
-                        <div style={styles.alertBox}>
+                        <div style={styles.alertBox} className="bg-card border border-border">
                             <div style={styles.alertIcon}>💡</div>
                             <div style={styles.alertDetails}>
-                                <p style={styles.alertLabel}>SQL Command</p>
-                                <code style={styles.sqlCode}>
+                                <p style={styles.alertLabel} className="text-foreground">SQL Command</p>
+                                <code style={styles.sqlCode} className="bg-muted text-muted-foreground">
                                     {index.suggestion}
                                 </code>
                             </div>
@@ -683,7 +645,7 @@ export default function Optimization() {
                         {index.estimatedImprovement && (
                             <div style={styles.performanceInsight}>
                                 <span style={styles.improvementIcon}>📈</span>
-                                <span style={styles.improvementText}>
+                                <span style={styles.improvementText} className="text-muted-foreground">
                                     Estimated improvement: {index.estimatedImprovement}
                                 </span>
                             </div>
@@ -692,6 +654,7 @@ export default function Optimization() {
                     <div style={styles.actionButtons}>
                         <button
                             style={{ ...styles.buttonIgnore, opacity: actionLoading ? 0.7 : 1, cursor: 'pointer' }}
+                            className="bg-muted border border-border text-foreground hover:bg-accent"
                             disabled={actionLoading}
                             onClick={() => handleDismiss('missingIndexes', idx)}
                         >
@@ -699,6 +662,7 @@ export default function Optimization() {
                         </button>
                         <button
                             style={{ ...styles.buttonApply, opacity: actionLoading ? 0.7 : 1, cursor: 'pointer' }}
+                            className="bg-primary text-primary-foreground hover:bg-primary/90"
                             disabled={actionLoading}
                             onClick={() => handleApplyOptimization(
                                 index.suggestion, 
@@ -715,10 +679,10 @@ export default function Optimization() {
 
             {/* Schema Improvements */}
             {schemaImprovements.length > 0 && (
-                <div style={styles.card}>
+                <div style={styles.card} className="bg-card border border-border">
                     <div style={styles.cardHeader}>
-                        <h2 style={styles.cardTitle}>Schema Improvements</h2>
-                        <p style={styles.cardDescription}>
+                        <h2 style={styles.cardTitle} className="text-foreground">Schema Improvements</h2>
+                        <p style={styles.cardDescription} className="text-muted-foreground">
                             AI-recommended improvements to your database schema
                         </p>
                     </div>
@@ -727,10 +691,10 @@ export default function Optimization() {
                             <div key={`improvement-${idx}`} style={{
                                 ...styles.alertBox,
                                 marginBottom: idx < schemaImprovements.length - 1 ? "16px" : "0"
-                            }}>
+                            }} className="bg-card border border-border">
                                 <div style={styles.alertDetails}>
                                     <div style={{display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "8px"}}>
-                                        <p style={styles.alertLabel}>
+                                        <p style={styles.alertLabel} className="text-foreground">
                                             <strong>{improvement.tableName}</strong> - {improvement.issue}
                                         </p>
                                         <span style={{
@@ -757,6 +721,7 @@ export default function Optimization() {
                                     <div style={{...styles.actionButtons, marginTop: "12px"}}>
                                         <button
                                             style={{ ...styles.buttonIgnore, opacity: actionLoading ? 0.7 : 1, cursor: 'pointer' }}
+                                            className="bg-muted border border-border text-foreground hover:bg-accent"
                                             disabled={actionLoading}
                                             onClick={() => handleDismiss('schemaImprovements', idx)}
                                         >
@@ -765,6 +730,7 @@ export default function Optimization() {
                                         {improvement.suggestion && improvement.suggestion.trim().toUpperCase().startsWith('ALTER') && (
                                             <button
                                                 style={{ ...styles.buttonApply, opacity: actionLoading ? 0.7 : 1, cursor: 'pointer' }}
+                                                className="bg-primary text-primary-foreground hover:bg-primary/90"
                                                 disabled={actionLoading}
                                                 onClick={() => handleApplyOptimization(
                                                     improvement.suggestion, 
@@ -786,29 +752,29 @@ export default function Optimization() {
 
             {/* Potential Issues */}
             {potentialIssues.length > 0 && (
-                <div style={styles.card}>
+                <div style={styles.card} className="bg-card border border-border">
                     <div style={styles.cardHeader}>
-                        <h2 style={styles.cardTitle}>Potential Issues</h2>
-                        <p style={styles.cardDescription}>
+                        <h2 style={styles.cardTitle} className="text-foreground">Potential Issues</h2>
+                        <p style={styles.cardDescription} className="text-muted-foreground">
                             AI-identified issues that may require manual review
                         </p>
                     </div>
                     <div style={styles.tableContainer}>
-                        <table style={styles.dataTable}>
-                            <thead style={styles.tableHeader}>
+                        <table style={styles.dataTable} className="bg-card border border-border">
+                            <thead style={styles.tableHeader} className="bg-muted">
                                 <tr>
-                                    <th style={styles.tableHeaderCell}>Table</th>
-                                    <th style={styles.tableHeaderCell}>Issue</th>
-                                    <th style={styles.tableHeaderCell}>Severity</th>
-                                    <th style={styles.tableHeaderCell}>Recommendation</th>
-                                    <th style={styles.tableHeaderCell}>Action</th>
+                                    <th style={styles.tableHeaderCell} className="text-foreground border-b border-r border-border">Table</th>
+                                    <th style={styles.tableHeaderCell} className="text-foreground border-b border-r border-border">Issue</th>
+                                    <th style={styles.tableHeaderCell} className="text-foreground border-b border-r border-border">Severity</th>
+                                    <th style={styles.tableHeaderCell} className="text-foreground border-b border-r border-border">Recommendation</th>
+                                    <th style={styles.tableHeaderCell} className="text-foreground border-b border-border">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {potentialIssues.map((issue, idx) => (
-                                    <tr key={`issue-${idx}`} style={styles.tableRow}>
-                                        <td style={styles.tableCell}>{issue.tableName}</td>
-                                        <td style={styles.tableCell}>{issue.issue}</td>
+                                    <tr key={`issue-${idx}`} style={styles.tableRow} className="border-b border-border hover:bg-muted/50">
+                                        <td style={styles.tableCell} className="text-foreground border-r border-border">{issue.tableName}</td>
+                                        <td style={styles.tableCell} className="text-foreground border-r border-border">{issue.issue}</td>
                                         <td style={{ ...styles.tableCell, ...styles.centerAlign }}>
                                             <span style={{
                                                 ...styles.badgeHigh,
@@ -820,10 +786,11 @@ export default function Optimization() {
                                                 {issue.severity || "MEDIUM"}
                                             </span>
                                         </td>
-                                        <td style={styles.tableCell}>{issue.recommendation}</td>
+                                        <td style={styles.tableCell} className="text-foreground border-r border-border">{issue.recommendation}</td>
                                         <td style={{ ...styles.tableCell, ...styles.actionCell }}>
                                             <button
                                                 style={{...styles.actionButton, cursor: 'pointer'}}
+                                                className="bg-muted border border-border text-foreground hover:bg-accent px-3 py-1 rounded"
                                                 onClick={() => handleDismiss('potentialIssues', idx)}
                                             >
                                                 Dismiss
@@ -840,11 +807,12 @@ export default function Optimization() {
             {/* Success Modal */}
             {showSuccessModal && (
                 <div style={styles.modalOverlay}>
-                    <div style={styles.modalContent}>
-                        <h3 style={styles.modalTitle}>✓ Optimization Applied</h3>
-                        <p>Your optimization has been successfully applied to the database.</p>
+                    <div style={styles.modalContent} className="bg-card border border-border">
+                        <h3 style={styles.modalTitle} className="text-foreground">✓ Optimization Applied</h3>
+                        <p className="text-muted-foreground">Your optimization has been successfully applied to the database.</p>
                         <button
                             style={{...styles.modalButton, cursor: 'pointer'}}
+                            className="bg-primary text-primary-foreground hover:bg-primary/90"
                             onClick={() => setShowSuccessModal(false)}
                         >
                             Close

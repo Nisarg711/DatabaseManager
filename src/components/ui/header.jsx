@@ -3,7 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import { signOut } from 'next-auth/react';
 import { Button } from "@/components/ui/button";
-import { CircleUserRound, HelpCircle, Shield, Database, LogOut } from 'lucide-react';
+import { CircleUserRound, HelpCircle, Shield, Database, LogOut, Moon, Sun } from 'lucide-react';
+import { useTheme } from '@/components/ThemeProvider';
 
 const handleLogout = async () => {
     try {
@@ -36,6 +37,7 @@ const handleLogout = async () => {
 
 const Header = () => {
     const [isAdmin, setIsAdmin] = useState(false);
+    const { theme, toggleTheme } = useTheme();
 
     useEffect(() => {
         // Check if user is admin
@@ -67,6 +69,14 @@ const Header = () => {
                         </div>
                     </div>
                     <div className="side flex items-center gap-2">
+                        <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={toggleTheme}
+                            className="cursor-pointer"
+                            title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}>
+                            {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+                        </Button>
                         {isAdmin && (
                             <Button
                                 variant="outline"

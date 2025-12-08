@@ -23,7 +23,7 @@ export default function Dropdown({ items = [], selected, onSelect }) {
         <div className="relative inline-block" ref={dropdownRef}>
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 min-w-[150px] justify-between cursor-pointer"
+                className="flex items-center gap-2 px-4 py-2 bg-card text-foreground border border-border rounded-md hover:bg-accent focus:outline-none focus:ring-2 focus:ring-ring min-w-[150px] justify-between cursor-pointer"
             >
                 <span className="truncate">{selected || "Select an option"}</span>
                 <ChevronDown
@@ -33,7 +33,7 @@ export default function Dropdown({ items = [], selected, onSelect }) {
             </button>
 
             {isOpen && items.length > 0 && (
-                <div className="absolute z-50 mt-1 w-full bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-auto">
+                <div className="absolute z-50 mt-1 w-full bg-card border border-border rounded-md shadow-lg max-h-60 overflow-auto">
                     {items.map((item, index) => (
                         <div
                             key={index}
@@ -41,7 +41,7 @@ export default function Dropdown({ items = [], selected, onSelect }) {
                                 onSelect(item);
                                 setIsOpen(false);
                             }}
-                            className={`px-4 py-2 cursor-pointer hover:bg-gray-100 ${item === selected ? "bg-blue-50 text-blue-700 font-medium" : ""
+                            className={`px-4 py-2 cursor-pointer hover:bg-accent text-foreground ${item === selected ? "bg-primary/10 text-primary font-medium" : ""
                                 }`}
                         >
                             {item}

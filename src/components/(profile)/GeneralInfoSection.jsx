@@ -10,9 +10,9 @@ export default function GeneralInfoSection({
   onSave
 }) {
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6">
+    <div className="bg-card rounded-xl shadow-lg border border-border p-6">
       <div className="flex items-center justify-between mb-6">
-        <h3 className="text-2xl font-bold text-[#1e4a8a] flex items-center gap-2">
+        <h3 className="text-2xl font-bold text-foreground flex items-center gap-2">
           <User className="w-6 h-6" />
           General Information
         </h3>
@@ -20,7 +20,7 @@ export default function GeneralInfoSection({
           <button
             onClick={onSave}
             disabled={savingGeneral}
-            className="flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition-colors disabled:opacity-50 cursor-pointer">
+            className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-2 rounded-lg transition-colors disabled:opacity-50 cursor-pointer">
             <Save className="w-4 h-4" />
             {savingGeneral ? "Saving..." : "Save Changes"}
           </button>
@@ -29,7 +29,7 @@ export default function GeneralInfoSection({
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label htmlFor="nationality" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="nationality" className="block text-sm font-medium text-foreground mb-2">
             <Globe className="w-4 h-4 inline mr-1" />
             Nationality
           </label>
@@ -38,13 +38,13 @@ export default function GeneralInfoSection({
             type="text"
             value={generalForm.nationality}
             onChange={(e) => onGeneralChange('nationality', e.target.value)}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1e4a8a] focus:border-transparent"
+            className="w-full px-4 py-2 border border-border bg-input-background text-foreground rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent"
             placeholder="Enter nationality"
           />
         </div>
         
         <div>
-          <label htmlFor="birth-date" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="birth-date" className="block text-sm font-medium text-foreground mb-2">
             <Calendar className="w-4 h-4 inline mr-1" />
             Birth Date
           </label>
@@ -53,12 +53,12 @@ export default function GeneralInfoSection({
             type="date"
             value={generalForm.birth_date}
             onChange={(e) => onGeneralChange('birth_date', e.target.value)}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1e4a8a] focus:border-transparent"
+            className="w-full px-4 py-2 border border-border bg-input-background text-foreground rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent"
           />
         </div>
         
         <div>
-          <label htmlFor="organization-name" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="organization-name" className="block text-sm font-medium text-foreground mb-2">
             <Building className="w-4 h-4 inline mr-1" />
             Organization Name
           </label>
@@ -67,13 +67,13 @@ export default function GeneralInfoSection({
             type="text"
             value={generalForm.organization_name}
             onChange={(e) => onGeneralChange('organization_name', e.target.value)}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1e4a8a] focus:border-transparent"
+            className="w-full px-4 py-2 border border-border bg-input-background text-foreground rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent"
             placeholder="Enter organization name"
           />
         </div>
         
         <div>
-          <label htmlFor="organization-type" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="organization-type" className="block text-sm font-medium text-foreground mb-2">
             <Building className="w-4 h-4 inline mr-1" />
             Organization Type
           </label>
@@ -81,7 +81,7 @@ export default function GeneralInfoSection({
             id="organization-type"
             value={generalForm.organization_type}
             onChange={(e) => onGeneralChange('organization_type', e.target.value)}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1e4a8a] focus:border-transparent">
+            className="w-full px-4 py-2 border border-border bg-input-background text-foreground rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent">
             <option value="">Select type</option>
             <option value="Corporate">Corporate</option>
             <option value="Startup">Startup</option>
@@ -92,7 +92,7 @@ export default function GeneralInfoSection({
         </div>
         
         <div>
-          <label htmlFor="joining-date" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="joining-date" className="block text-sm font-medium text-foreground mb-2">
             <Calendar className="w-4 h-4 inline mr-1" />
             Joining Date
           </label>
@@ -101,12 +101,12 @@ export default function GeneralInfoSection({
             type="date"
             value={generalForm.joining_date}
             onChange={(e) => onGeneralChange('joining_date', e.target.value)}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1e4a8a] focus:border-transparent"
+            className="w-full px-4 py-2 border border-border bg-input-background text-foreground rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent"
           />
         </div>
         
         <div>
-          <label htmlFor="role" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="role" className="block text-sm font-medium text-foreground mb-2">
             <Briefcase className="w-4 h-4 inline mr-1" />
             Role
           </label>
@@ -114,7 +114,7 @@ export default function GeneralInfoSection({
             id="role"
             value={generalForm.role}
             onChange={(e) => onGeneralChange('role', e.target.value)}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1e4a8a] focus:border-transparent">
+            className="w-full px-4 py-2 border border-border bg-input-background text-foreground rounded-lg focus:ring-2 focus:ring-ring focus:border-transparent">
             <option value="">Select role</option>
             <option value="Student">Student</option>
             <option value="Teacher">Teacher</option>

@@ -31,51 +31,53 @@
     --chart-4: #F3F3E0;
     --chart-5: #133E87;
     --radius: 0.625rem;
-    --sidebar: #F3F3E0;
+    --sidebar: #ffffff;
     --sidebar-foreground: #133E87;
     --sidebar-primary: #133E87;
     --sidebar-primary-foreground: #ffffff;
-    --sidebar-accent: #CBDCEB;
+    --sidebar-accent: #f3f4f6;
     --sidebar-accent-foreground: #133E87;
-    --sidebar-border: rgba(19, 62, 135, 0.2);
-    --sidebar-ring: #608BC1;
+    --sidebar-border: rgba(229, 231, 235, 1);
+    --sidebar-ring: #133E87;
 }
 
 .dark {
-    --background: #133E87;
-    --foreground: #F3F3E0;
-    --card: #608BC1;
-    --card-foreground: #F3F3E0;
-    --popover: #608BC1;
-    --popover-foreground: #F3F3E0;
-    --primary: #CBDCEB;
-    --primary-foreground: #133E87;
-    --secondary: #608BC1;
-    --secondary-foreground: #F3F3E0;
-    --muted: #608BC1;
-    --muted-foreground: #F3F3E0;
-    --accent: #CBDCEB;
-    --accent-foreground: #133E87;
-    --destructive: #d4183d;
-    --destructive-foreground: #F3F3E0;
-    --border: rgba(203, 220, 235, 0.3);
-    --input: #608BC1;
-    --ring: #CBDCEB;
+    --background: #000000;
+    --foreground: #ffffff;
+    --card: #0f0f0f;
+    --card-foreground: #ffffff;
+    --popover: #0f0f0f;
+    --popover-foreground: #ffffff;
+    --primary: #608BC1;
+    --primary-foreground: #ffffff;
+    --secondary: #1a1a1a;
+    --secondary-foreground: #ffffff;
+    --muted: #262626;
+    --muted-foreground: #a3a3a3;
+    --accent: #2a2a2a;
+    --accent-foreground: #ffffff;
+    --destructive: #ef4444;
+    --destructive-foreground: #ffffff;
+    --border: rgba(96, 139, 193, 0.25);
+    --input: transparent;
+    --input-background: #0f0f0f;
+    --switch-background: #608BC1;
+    --ring: #608BC1;
     --font-weight-medium: 500;
     --font-weight-normal: 400;
-    --chart-1: #CBDCEB;
-    --chart-2: #608BC1;
-    --chart-3: #133E87;
-    --chart-4: #F3F3E0;
-    --chart-5: #133E87;
-    --sidebar: #608BC1;
-    --sidebar-foreground: #F3F3E0;
-    --sidebar-primary: #CBDCEB;
-    --sidebar-primary-foreground: #133E87;
-    --sidebar-accent: #133E87;
-    --sidebar-accent-foreground: #F3F3E0;
-    --sidebar-border: rgba(203, 220, 235, 0.3);
-    --sidebar-ring: #CBDCEB;
+    --chart-1: #608BC1;
+    --chart-2: #818cf8;
+    --chart-3: #34d399;
+    --chart-4: #fbbf24;
+    --chart-5: #f472b6;
+    --sidebar: #0a0a0a;
+    --sidebar-foreground: #ffffff;
+    --sidebar-primary: #608BC1;
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: #1a1a1a;
+    --sidebar-accent-foreground: #ffffff;
+    --sidebar-border: rgba(96, 139, 193, 0.25);
+    --sidebar-ring: #608BC1;
 }
 
 @theme inline {
@@ -133,7 +135,7 @@
 .chat-input-area.loading {
     border: 2px solid transparent;
     background: 
-        linear-gradient(#ffffff, #ffffff) padding-box,
+        linear-gradient(var(--card), var(--card)) padding-box,
         linear-gradient(90deg, 
             transparent 0%, 
             transparent 40%, 
@@ -157,4 +159,71 @@
     100% {
         background-position: 200% 0%;
     }
+}
+
+/* Shimmer animation for loading cards */
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.animate-shimmer {
+    animation: shimmer 2s infinite;
+}
+
+/* Animated border for project cards on hover */
+@keyframes borderTrace {
+    0% {
+        background-position: -100% 0, 100% -100%, 200% 100%, 0 200%;
+    }
+    25% {
+        background-position: 100% 0, 100% -100%, 200% 100%, 0 200%;
+    }
+    50% {
+        background-position: 100% 0, 100% 100%, 200% 100%, 0 200%;
+    }
+    75% {
+        background-position: 100% 0, 100% 100%, -100% 100%, 0 200%;
+    }
+    100% {
+        background-position: 100% 0, 100% 100%, -100% 100%, 0 -100%;
+    }
+}
+
+.card-border-animation {
+    position: relative;
+    border-radius: 12px;
+}
+
+.card-border-animation::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    border: 4px solid rgba(96, 139, 193, 0.8);
+    box-shadow: 0 0 20px rgba(96, 139, 193, 0.7);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card-border-animation:hover::before {
+    opacity: 1;
+}
+
+.card-border-animation:hover {
+    transform: scale(1.02);
+}
+
+.card-border-content {
+    position: relative;
+    z-index: 1;
+}
+
+.card-border-content {
+    position: relative;
+    z-index: 1;
 }

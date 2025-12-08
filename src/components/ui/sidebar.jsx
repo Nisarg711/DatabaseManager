@@ -9,11 +9,11 @@ export default function Sidebar(props) {
 
     return (
         <div
-            className={`h-screen bg-white border-1 flex flex-col transition-all duration-300 ${isCollapsed ? "w-16" : "w-40 md:w-56"}
+            className={`h-screen bg-sidebar border-sidebar-border border-r flex flex-col transition-all duration-300 ${isCollapsed ? "w-16" : "w-40 md:w-56"}
       }`}
         >
             <div className="flex items-center justify-between p-4">
-                <button onClick={toggleSidebar} className="hover:cursor-pointer">
+                <button onClick={toggleSidebar} className="hover:cursor-pointer text-sidebar-foreground">
                     <Menu />
                 </button>
 
@@ -36,7 +36,7 @@ export default function Sidebar(props) {
 function SidebarItem({ icon, label, collapsed, isactive, onClick }) {
     return (
         <div onClick={onClick}
-            className={` ${isactive ? "bg-gray-100" : ""} flex items-center gap-3 cursor-pointer px-4 py-2 hover:bg-gray-100 text-gray-700  ${collapsed ? "justify-center" : ""}`}
+            className={` ${isactive ? "bg-sidebar-accent text-sidebar-accent-foreground" : "text-sidebar-foreground"} flex items-center gap-3 cursor-pointer px-4 py-2 hover:bg-sidebar-accent hover:text-sidebar-accent-foreground transition-colors  ${collapsed ? "justify-center" : ""}`}
         >
             {icon}
             {!collapsed && <span>{label}</span>}

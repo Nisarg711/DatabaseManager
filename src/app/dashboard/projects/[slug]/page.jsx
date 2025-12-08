@@ -30,7 +30,17 @@ export default function DashboardPage() {
 
   const [projects, setProjects] = useState([]);
   const [projectdetail, setprojectdetail] = useState({});
+  const [isPageInitialized, setIsPageInitialized] = useState(false);
   const [page, setpage] = useState("table");
+
+  // Mark page as initialized and restore saved page on mount
+  useEffect(() => {
+    setIsPageInitialized(true);
+    const savedPage = localStorage.getItem(`project-${projectid}-active-page`);
+    if (savedPage) {
+      setpage(savedPage);
+    }
+  }, [projectid]);
 
   const [selectedTable, setSelectedTable] = useState(null);
   const [tableData, setTableData] = useState(null);
@@ -67,6 +77,9 @@ export default function DashboardPage() {
 
   const handleSetPage = (newPage) => {
     setpage(newPage);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem(`project-${projectid}-active-page`, newPage);
+    }
   };
 
  const handleinsertrow = async () => {
@@ -621,14 +634,14 @@ const fetchtabledata = async (tablename, recordLimit = limit) => {
                     await deleteselectedrows();
                   }}>
                     <div className="flex gap-2 mt-4">
-                      <button type="button" className="px-4 py-2 border rounded cursor-pointer" onClick={() => 
+                      <button type="button" className="px-4 py-2 border border-border bg-card text-foreground rounded cursor-pointer hover:bg-accent" onClick={() => 
                        {
                         setdeleteRows([]);
                         setdeletemodalopen(false)
                       }
                         
                         }>Cancel</button>
-                      <button type="submit" className="px-4 py-2 border rounded text-red-800 cursor-pointer">Delete</button>
+                      <button type="submit" className="px-4 py-2 border border-destructive bg-destructive text-destructive-foreground rounded cursor-pointer hover:opacity-90">Delete</button>
                     </div>
                   </form>
       </Modal>
@@ -657,10 +670,10 @@ const fetchtabledata = async (tablename, recordLimit = limit) => {
                       const isRequired = !col.nullable && col.default === null;
                       return (
                         <div key={col.name} className="flex flex-col mb-2">
-                          <label className="text-sm">
+                          <label className="text-sm text-foreground">
                             {col.name}
                             {isRequired && (
-                              <span className="text-red-500 ml-1" aria-hidden>
+                              <span className="text-destructive ml-1" aria-hidden>
                                 *
                               </span>
                             )}
@@ -673,23 +686,23 @@ const fetchtabledata = async (tablename, recordLimit = limit) => {
                                 ? `${col.default} will be set if no value provided`
                                 : ""
                             }
-                            className="border rounded p-2"
+                            className="border border-border bg-input-background text-foreground rounded p-2"
                           />
                         </div>
                       );
                     })}
                     <div className="flex gap-2 mt-4">
-                      <button type="button" className="px-4 py-2 border rounded cursor-pointer" onClick={() => setIsInsertModalOpen(false)}>Cancel</button>
-                      <button type="submit" className="px-4 py-2 bg-primary text-white rounded cursor-pointer">Insert</button>
+                      <button type="button" className="px-4 py-2 border border-border bg-card text-foreground rounded cursor-pointer hover:bg-accent" onClick={() => setIsInsertModalOpen(false)}>Cancel</button>
+                      <button type="submit" className="px-4 py-2 bg-primary text-primary-foreground rounded cursor-pointer hover:opacity-90">Insert</button>
                     </div>
                   </form>
                  
                 </div>
               ) : (
                 <div>
-                  <p className="text-sm text-gray-600">No metadata available. Try re-opening the dialog.</p>
+                  <p className="text-sm text-muted-foreground">No metadata available. Try re-opening the dialog.</p>
                   <div className="mt-3">
-                    <button onClick={handleinsertrow} className="px-3 py-1 border rounded cursor-pointer">Please wait or retry</button>
+                    <button onClick={handleinsertrow} className="px-3 py-1 border border-border bg-card text-foreground rounded cursor-pointer hover:bg-accent">Please wait or retry</button>
                   </div>
                 </div>
               )}
@@ -709,14 +722,14 @@ const fetchtabledata = async (tablename, recordLimit = limit) => {
         loadingOverlay={true}
       >
         <div className="space-y-3">
-          <p className="text-sm text-gray-700">Are you sure you want to update this value?</p>
+          <p className="text-sm text-foreground">Are you sure you want to update this value?</p>
           <div className="flex gap-2 mt-4">
-            <button type="button" className="px-4 py-2 border rounded cursor-pointer" onClick={() => {
+            <button type="button" className="px-4 py-2 border border-border bg-card text-foreground rounded cursor-pointer hover:bg-accent" onClick={() => {
               setIsUpdateModalOpen(false);
               setPendingUpdatePayload(null);
               setEditingCell(null);
             }}>Cancel</button>
-            <button type="button" className="px-4 py-2 bg-primary text-white rounded cursor-pointer" onClick={async () => {
+            <button type="button" className="px-4 py-2 bg-primary text-primary-foreground rounded cursor-pointer hover:opacity-90" onClick={async () => {
               if (!pendingUpdatePayload) return;
               await performUpdate(pendingUpdatePayload);
             }}>
@@ -726,27 +739,27 @@ const fetchtabledata = async (tablename, recordLimit = limit) => {
         </div>
       </Modal>
 
-      <div className="db bg-white w-full flex items-center h-26 gap-4 px-6">
+      <div className="db bg-card w-full flex items-center h-26 gap-4 px-6 border-b border-border">
         <div className="db_left flex items-center">
           <ArrowLeft
-            className="cursor-pointer"
+            className="cursor-pointer text-foreground"
             onClick={() => (globalThis.location.href = "/dashboard")}
           />
         </div>
 
         <div className="db_right w-full flex gap-2">
           <div className="db_icon flex items-center">
-            <div className="p-2 bg-slate-300 rounded-xl w-12 h-12 flex items-center justify-center">
+            <div className="p-2 bg-muted rounded-xl w-12 h-12 flex items-center justify-center text-foreground">
               <Database />
             </div>
           </div>
 
           <div className="details flex flex-col justify-center">
-            <span className="text-xs md:text-xl">{projectdetail.project_name}</span>
-            <span className="text-gray-600 text-xs md:text-sm">
+            <span className="text-xs md:text-xl text-foreground">{projectdetail.project_name}</span>
+            <span className="text-muted-foreground text-xs md:text-sm">
               {projectdetail.description}
             </span>
-            <span className="text-xs text-gray-600">
+            <span className="text-xs text-muted-foreground">
               📊 {projectdetail.table_count} Tables
             </span>
           </div>
@@ -762,14 +775,14 @@ const fetchtabledata = async (tablename, recordLimit = limit) => {
 
       {/* Body */}
       <div className="content flex flex-row w-full flex-1 min-h-0">
-        <Sidebar active={page} onSelectPage={(p) => setpage(p)} />
+        <Sidebar active={page} onSelectPage={handleSetPage} />
 
 
         <div className="rightcontent flex flex-col w-full border-1 overflow-x-hidden overflow-y-scroll min-h-0 h-screen">
       
-          {page === "table" ? (
+          {!isPageInitialized ? null : page === "table" ? (
             <>
-              <div className="table_select h-14 flex items-center bg-white p-4 gap-2">
+              <div className="table_select h-14 flex items-center bg-card text-card-foreground p-4 gap-2">
                 Table Explorer
                 <Dropdown
                   items={tablelist}
@@ -784,7 +797,7 @@ const fetchtabledata = async (tablename, recordLimit = limit) => {
                 />
               </div>
 
-              <div className="mockbutton  h-28 gap-2 bg-white items-center flex-col  max-[830]:h-65   min-[830]:flex-row min-[830]:h-19 flex p-4 justify-between">
+              <div className="mockbutton  h-28 gap-2 bg-card border-b border-border items-center flex-col  max-[830]:h-65   min-[830]:flex-row min-[830]:h-19 flex p-4 justify-between">
                <div className="frontbtn flex flex-row gap-2 max-[830]:flex-col max-[830]:w-full max-[830]:gap-3">
                     <Button className="max-[510]:w-full" disabled={insertLoading} onClick={async ()=>{
                    
@@ -803,7 +816,7 @@ const fetchtabledata = async (tablename, recordLimit = limit) => {
                   </Button>
 
                   <Button
-                   className="text-black bg-sidebar border-1 hover:bg-gray-300 hover:cursor-pointer"
+                   className="text-foreground bg-card border border-border hover:bg-muted hover:cursor-pointer"
                     onClick={ tableData ? async () => {
                       if (deletebtn) await handledelete();
                       setdeletebtn(!deletebtn);
@@ -852,34 +865,34 @@ const fetchtabledata = async (tablename, recordLimit = limit) => {
                         ></path>
                       </svg>
                       <div>
-                        <div className="h-4 w-56 bg-gray-200 rounded-md mb-2" />
-                        <div className="text-sm text-gray-500">
+                        <div className="h-4 w-56 bg-muted rounded-md mb-2" />
+                        <div className="text-sm text-muted-foreground">
                           Loading table data...
                         </div>
                       </div>
                     </div>
 
-                    <div className="mt-6 bg-white/90 backdrop-blur-sm rounded-lg shadow-md p-4 border border-gray-100">
+                    <div className="mt-6 bg-card/90 backdrop-blur-sm rounded-lg shadow-md p-4 border border-border">
 
                       <div className="flex items-center gap-4 mb-3">
                         <div
-                          className="h-4 bg-gray-200 rounded"
+                          className="h-4 bg-muted rounded"
                           style={{ width: "35%" }}
                         />
                         <div
-                          className="h-4 bg-gray-200 rounded"
+                          className="h-4 bg-muted rounded"
                           style={{ width: "16%" }}
                         />
                         <div
-                          className="h-4 bg-gray-200 rounded"
+                          className="h-4 bg-muted rounded"
                           style={{ width: "16%" }}
                         />
                         <div
-                          className="h-4 bg-gray-200 rounded"
+                          className="h-4 bg-muted rounded"
                           style={{ width: "16%" }}
                         />
                         <div
-                          className="h-4 bg-gray-200 rounded"
+                          className="h-4 bg-muted rounded"
                           style={{ width: "12%" }}
                         />
                       </div>
@@ -887,11 +900,11 @@ const fetchtabledata = async (tablename, recordLimit = limit) => {
                       <div className="space-y-3">
                         {Array.from({ length: 6 }).map((_, i) => (
                       <div key={i} className="flex gap-4 items-center">
-                        <div className="h-4 bg-gray-200 rounded flex-1" />
-                        <div className="h-4 bg-gray-200 rounded" style={{ width: '16%' }} />
-                        <div className="h-4 bg-gray-200 rounded" style={{ width: '16%' }} />
-                        <div className="h-4 bg-gray-200 rounded" style={{ width: '16%' }} />
-                        <div className="h-4 bg-gray-200 rounded" style={{ width: '12%' }} />
+                        <div className="h-4 bg-muted rounded flex-1" />
+                        <div className="h-4 bg-muted rounded" style={{ width: '16%' }} />
+                        <div className="h-4 bg-muted rounded" style={{ width: '16%' }} />
+                        <div className="h-4 bg-muted rounded" style={{ width: '16%' }} />
+                        <div className="h-4 bg-muted rounded" style={{ width: '12%' }} />
                       </div>
                     ))}
                       </div>
@@ -1013,7 +1026,7 @@ const fetchtabledata = async (tablename, recordLimit = limit) => {
                           <tr>
                             <td
                               colSpan={tableData.columns.length}
-                              className="text-center py-4 text-gray-500"
+                              className="text-center py-4 text-muted-foreground"
                             >
                               No records found
                             </td>
@@ -1039,7 +1052,7 @@ const fetchtabledata = async (tablename, recordLimit = limit) => {
                             }
                             setloadmore(false);
                           }}
-                          className="text-black bg-sidebar border-1 hover:bg-gray-300 hover:cursor-pointer"
+                          className="text-foreground bg-muted border border-border hover:bg-accent hover:cursor-pointer"
                           disabled={loadmore}
                         >
                           {loadmore ? (
@@ -1085,34 +1098,34 @@ const fetchtabledata = async (tablename, recordLimit = limit) => {
                         ></path>
                       </svg>
                       <div>
-                        <div className="h-4 w-56 bg-gray-200 rounded-md mb-2 animate-pulse" />
-                        <div className="text-sm text-gray-500">
+                        <div className="h-4 w-56 bg-muted rounded-md mb-2 animate-pulse" />
+                        <div className="text-sm text-muted-foreground">
                           Loading table data...
                         </div>
                       </div>
                     </div>
 
-                    <div className="mt-6 bg-white/90 backdrop-blur-sm rounded-lg shadow-md p-4 border border-gray-100">
+                    <div className="mt-6 bg-card/90 backdrop-blur-sm rounded-lg shadow-md p-4 border border-border">
 
                       <div className="flex items-center gap-4 mb-3">
                         <div
-                          className="h-4 bg-gray-200 rounded "
+                          className="h-4 bg-muted rounded "
                           style={{ width: "35%" }}
                         />
                         <div
-                          className="h-4 bg-gray-200 rounded  animate-pulse"
+                          className="h-4 bg-muted rounded  animate-pulse"
                           style={{ width: "16%" }}
                         />
                         <div
-                          className="h-4 bg-gray-200 rounded "
+                          className="h-4 bg-muted rounded "
                           style={{ width: "16%" }}
                         />
                         <div
-                          className="h-4 bg-gray-200 rounded"
+                          className="h-4 bg-muted rounded"
                           style={{ width: "16%" }}
                         />
                         <div
-                          className="h-4 bg-gray-200 rounded  animate-pulse"
+                          className="h-4 bg-muted rounded  animate-pulse"
                           style={{ width: "12%" }}
                         />
                       </div>
@@ -1120,21 +1133,21 @@ const fetchtabledata = async (tablename, recordLimit = limit) => {
                       <div className="space-y-3">
                         {Array.from({ length: 6 }).map((_, i) => (
                           <div key={i} className="flex gap-4 items-center">
-                            <div className="h-4 bg-gray-200 rounded flex-1" />
+                            <div className="h-4 bg-muted rounded flex-1" />
                             <div
-                              className="h-4 bg-gray-200 rounded"
+                              className="h-4 bg-muted rounded"
                               style={{ width: "16%" }}
                             />
                             <div
-                              className="h-4 bg-gray-200 rounded"
+                              className="h-4 bg-muted rounded"
                               style={{ width: "16%" }}
                             />
                             <div
-                              className="h-4 bg-gray-200 rounded"
+                              className="h-4 bg-muted rounded"
                               style={{ width: "16%" }}
                             />
                             <div
-                              className="h-4 bg-gray-200 rounded "
+                              className="h-4 bg-muted rounded "
                               style={{ width: "12%" }}
                             />
                           </div>

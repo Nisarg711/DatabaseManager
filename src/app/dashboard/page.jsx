@@ -6,7 +6,8 @@ import { Button } from "@/components/ui/button";
 import { ProjectCard } from "@/components/(dashboard)/ProjectCard";
 import ImportDatabase from '@/components/(dashboard)/ImportDatabase';
 import { showToast } from "nextjs-toast-notify";
-import { Database, LogOut, CheckCircle, Table, User, Sparkles, HelpCircle, Search } from "lucide-react";
+import { Database, LogOut, CheckCircle, Table, User, Sparkles, HelpCircle, Search, Moon, Sun } from "lucide-react";
+import { useTheme } from '@/components/ThemeProvider';
 import './index.css';
 
 export default function DashboardPage() {
@@ -15,6 +16,7 @@ export default function DashboardPage() {
     const [nlInput, setNlInput] = useState("");
     const [searchTerm, setSearchTerm] = useState("");
     const [creating, setCreating] = useState(false);
+    const { theme, toggleTheme } = useTheme();
 
     useEffect(() => {
         const fetchProjectsData = async () => {
@@ -151,6 +153,14 @@ export default function DashboardPage() {
                             <Button
                                 variant="outline"
                                 size="sm"
+                                onClick={toggleTheme}
+                                className="cursor-pointer"
+                                title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}>
+                                {theme === 'dark' ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+                            </Button>
+                            <Button
+                                variant="outline"
+                                size="sm"
                                 onClick={() => (window.location.href = "/help")}
                                 className="cursor-pointer"
                                 title="Help & Support">
@@ -202,13 +212,15 @@ export default function DashboardPage() {
                     <p className="cp-subtitle">
                         Describe your project and we'll automatically create the database and schema for you
                     </p>
-                    <textarea
-                        className="cp-textarea"
-                        placeholder="Example: I want to create a database for managing employee records with departments, salaries, and performance reviews..."
-                        rows={5}
-                        value={nlInput}
-                        onChange={(e) => setNlInput(e.target.value)}
-                    />
+                    <div className="cp-textarea-wrapper">
+                        <textarea
+                            className="cp-textarea"
+                            placeholder="Example: I want to create a database for managing employee records with departments, salaries, and performance reviews..."
+                            rows={5}
+                            value={nlInput}
+                            onChange={(e) => setNlInput(e.target.value)}
+                        />
+                    </div>
                     <button
                         className="cp-button cursor-pointer"
                         type="button"

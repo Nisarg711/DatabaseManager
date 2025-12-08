@@ -128,7 +128,7 @@ const FAQsSection = () => {
                         <iframe
                             width="100%"
                             height="100%"
-                            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                            src="https://youtu.be/ZMuJvdaLl1s?si=Xl03gHhBkC6GnYID"
                             title="DBuddy Tutorial"
                             frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
