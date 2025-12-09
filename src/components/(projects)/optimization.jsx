@@ -544,7 +544,19 @@ export default function Optimization() {
     const potentialIssues = optimizationData?.potentialIssues || [];
 
     if (loading) {
-        return <div style={styles.loadingContainer} className="bg-background text-foreground">Loading optimization data...</div>;
+        return (
+            <div style={styles.loadingContainer} className="bg-background text-foreground flex flex-col items-center justify-center gap-4">
+                <div className="relative w-24 h-24">
+                    <div className="absolute inset-0 border-4 border-primary/20 rounded-full"></div>
+                    <div className="absolute inset-0 border-4 border-transparent border-t-primary border-r-primary rounded-full animate-spin"></div>
+                    <div className="absolute inset-2 border-2 border-transparent border-b-primary/50 rounded-full animate-spin" style={{animationDirection: 'reverse', animationDuration: '1.5s'}}></div>
+                </div>
+                <div className="text-center">
+                    <p className="text-lg font-semibold text-primary mb-1">Analyzing your database...</p>
+                    <p className="text-sm text-muted-foreground">Finding optimization opportunities</p>
+                </div>
+            </div>
+        );
     }
 
     if (error) {

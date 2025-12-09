@@ -3,12 +3,14 @@ import { useState } from "react";
 import { Sparkles, Database, TrendingUp, Code , X} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import { useTheme } from '@/components/ThemeProvider';
 import './summary_index.css'
 
 export default function SummaryCard({ projectId, onClose }) {
     const [summary, setSummary] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const { theme } = useTheme();
 
 
     // Mock data for testing (remove this when API is ready)
@@ -46,7 +48,7 @@ export default function SummaryCard({ projectId, onClose }) {
     };
 
     return (
-        <div className="summary-card">
+        <div className="summary-card" data-theme={theme}>
             {/* Header */}
             <div className="summary-header">
                 <div className="header-left">
@@ -69,7 +71,7 @@ export default function SummaryCard({ projectId, onClose }) {
                         Here is an AI-powered summary of your
                         database structure and contents
                     </p>
-                    <Button onClick={fetchSummary} className="generate-btn cursor-pointer">
+                    <Button onClick={()=>{fetchSummary()}} className="generate-btn cursor-pointer bg-primary text-primary-foreground hover:bg-primary/90">
                         <Sparkles className="w-4 h-4" />
                         Generate Summary
                     </Button>
@@ -106,7 +108,7 @@ export default function SummaryCard({ projectId, onClose }) {
                             <p className="error-msg">{error}</p>
                         </div>
                     </div>
-                    <Button onClick={fetchSummary} className="error-btn cursor-pointer">
+                    <Button onClick={fetchSummary} className="error-btn cursor-pointer bg-primary text-primary-foreground hover:bg-primary/90">
                         Try Again
                     </Button>
                 </div>

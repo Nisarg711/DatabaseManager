@@ -1,4 +1,4 @@
-/* Main Card */
+/* Main Card - Dark Mode (default) */
 .summary-card {
   background: #0f0f0f;
   padding: 24px;
@@ -15,6 +15,69 @@
 .summary-card:hover {
   border-color: rgba(96, 139, 193, 0.5);
   box-shadow: 0 6px 16px rgba(96, 139, 193, 0.15);
+}
+
+/* Light Mode */
+.summary-card[data-theme="light"] {
+  background: #ffffff;
+  border: 2px solid rgba(96, 139, 193, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.summary-card[data-theme="light"]:hover {
+  border-color: rgba(96, 139, 193, 0.4);
+  box-shadow: 0 8px 20px rgba(96, 139, 193, 0.15);
+}
+
+.summary-card[data-theme="light"] .heading {
+  color: #1a1a1a;
+}
+
+.summary-card[data-theme="light"] .icon-blue {
+  color: #2563eb;
+}
+
+.summary-card[data-theme="light"] .initial-icon {
+  color: rgba(96, 139, 193, 0.4);
+}
+
+.summary-card[data-theme="light"] .initial-text {
+  color: #666666;
+}
+
+.summary-card[data-theme="light"] .loading-main,
+.summary-card[data-theme="light"] .loading-sub {
+  color: #1a1a1a;
+}
+
+.summary-card[data-theme="light"] .stats-card {
+  background: #f8f9fa;
+  border: 1px solid rgba(96, 139, 193, 0.15);
+}
+
+.summary-card[data-theme="light"] .stats-title {
+  color: #1a1a1a;
+}
+
+.summary-card[data-theme="light"] .stats-label {
+  color: #666666;
+}
+
+.summary-card[data-theme="light"] .error-box {
+  background: #fef2f2;
+  border: 1px solid #fca5a5;
+}
+
+.summary-card[data-theme="light"] .error-icon {
+  color: #dc2626;
+}
+
+.summary-card[data-theme="light"] .error-title {
+  color: #991b1b;
+}
+
+.summary-card[data-theme="light"] .error-msg {
+  color: #7f1d1d;
 }
 
 /* Header */

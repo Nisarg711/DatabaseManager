@@ -21,7 +21,7 @@ export default function DashboardPage() {
     useEffect(() => {
         const fetchProjectsData = async () => {
             try {
-                const res = await fetch("/api/projects", { cache: "no-store" });
+                const res = await fetch("/api/projects", { cache: "no-store", credentials: "same-origin" });
 
                 if (!res.ok) {
                     console.error("Failed to fetch projects", res.status);
@@ -262,9 +262,13 @@ export default function DashboardPage() {
                     </div>
 
                     {loading ? (
-                        <Card className="text-center py-12">
-                            <CardContent>Loading projects...</CardContent>
-                        </Card>
+                        <div className="flex flex-col items-center justify-center py-16 space-y-4">
+                            <div className="relative w-16 h-16">
+                                <div className="absolute inset-0 border-4 border-border rounded-full"></div>
+                                <div className="absolute inset-0 border-4 border-transparent border-t-primary rounded-full animate-spin"></div>
+                            </div>
+                            <p className="text-muted-foreground font-medium">Loading your projects...</p>
+                        </div>
                     ) : projects.length === 0 ? (
                         <Card className="text-center py-12">
                             <CardContent className="space-y-4">
@@ -324,9 +328,15 @@ export default function DashboardPage() {
                                             <ProjectCard
                                                 key={project.id}
                                                 project={normalizedProject}
-                                                onDeleted={(deletedId) =>
-                                                    setProjects((prev) => prev.filter((p) => p.id !== deletedId))
-                                                }
+                                                onDeleted={(deletedId) => {
+                                                    setProjects((prev) => prev.filter((p) => p.id !== deletedId));
+                                                    showToast.success('Project deleted successfully', {
+                                                        duration: 2000,
+                                                        progress: true,
+                                                        position: "top-center",
+                                                        transition: "bounceIn",
+                                                    });
+                                                }}
                                             />
                                         );
                                     })}
