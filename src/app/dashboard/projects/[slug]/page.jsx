@@ -773,10 +773,10 @@ const fetchtabledata = async (tablename, recordLimit = limit) => {
         </div>
       </div>
 
-      {/* Body */}
-      <div className="content flex flex-row w-full flex-1 min-h-0">
-        <Sidebar active={page} onSelectPage={handleSetPage} />
+      <Sidebar active={page} onSelectPage={handleSetPage} />
 
+      {/* Body */}
+      <div className="content flex flex-col w-full flex-1 min-h-0">
 
         <div className="rightcontent flex flex-col w-full border-1 overflow-x-hidden overflow-y-scroll min-h-0 h-screen">
       
