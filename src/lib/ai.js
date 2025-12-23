@@ -316,7 +316,7 @@ Return ONLY valid JSON in this exact format (no markdown, no extra text):
 {
   "operations": [
     {
-      "type": "create_table" | "alter_table" | "create_index" | "drop_table" | "drop_column" | "modify_column" | "other",
+      "type": "create_table" | "alter_table" | "create_index" | "drop_table" | "drop_column" | "modify_column" | "SELECT" | "other",
       "target": "table_name or target entity",
       "sql": "SQL statement",
       "explaination": "Why this operation is needed",

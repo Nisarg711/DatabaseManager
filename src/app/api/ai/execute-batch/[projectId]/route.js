@@ -32,7 +32,7 @@ export const POST = withRateLimit(
         const results = [];
         const errors = [];
         let totalExecutionTime = 0;
-
+        console.log("Recvd operations:", operations);
         // Execute each operation sequentially (not in a transaction for DDL statements)
         for (let i = 0; i < operations.length; i++) {
             const operation = operations[i];

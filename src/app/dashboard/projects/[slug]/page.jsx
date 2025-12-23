@@ -461,8 +461,12 @@ export default function DashboardPage() {
         return;
       }
 
-      // Prevent sending empty or whitespace-only values
-      if (String(editedvalue).trim() === "") {
+      // Prevent sending empty or whitespace-only values 
+      seteditedvalue(editedvalue.trim());
+      const constraint_check=tableData.columns.find((c)=>c.name===editingCell.colName);
+
+      if (String(editedvalue).trim() === "" && constraint_check && constraint_check.nullable===false) {
+        
         showToast.error("Value cannot be empty", {
           duration: 2000,
           progress: true,

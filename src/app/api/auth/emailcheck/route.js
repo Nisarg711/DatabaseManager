@@ -52,14 +52,16 @@ export async function POST(request) {
                 `,
             }),
         });
-
+        console.log("Brevo response status:", brevoResponse.status);
         if (!brevoResponse.ok) {
+             console.log("Brevo response status:", brevoResponse.status);
             return NextResponse.json({ error: "Failed to send email" }, { status: 500 });
         }
-
+ console.log("Brevo response status:", brevoResponse.status);
         return NextResponse.json({ message: "OTP sent successfully" }, { status: 200 });
 
     } catch (error) {
+
         console.error('Email check error:', error);
         return NextResponse.json({ error: "Internal server error" }, { status: 500 });
     }
